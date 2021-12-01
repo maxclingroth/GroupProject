@@ -16,15 +16,16 @@ def list_courses(id, c_roster):
     # has no return value.
     # -------------------------------------------------------------
     # Creates a list and iterates over the dictionary, storing classes taken in the list
-    coursesEnrolled = []
-    courseIterable = c_roster.items()
-    for course, students in courseIterable:
-        if id in students:
-            coursesEnrolled.append(course)
-    print('Courses registered:')
-    for item in coursesEnrolled:
-        print(item)
-    print('Total number:', len(coursesEnrolled))
+    list = []
+    for i in c_roster:
+        if id in c_roster[i]:
+            list.append(i)
+    length = len(list)
+    i = 0
+    print("You are currently enrolled in the following courses:")
+    while i < length:
+        print(list[i])
+        i += 1
 
 
 def add_course(id, c_roster, c_max_size):
@@ -41,23 +42,17 @@ def add_course(id, c_roster, c_max_size):
     # roster and display a message if there is no problem.  This
     # function has no return value.
     # -------------------------------------------------------------
-    course = input('Enter course you want to add: ')
-
     # Tests if the course entered is a key in the c_roster dictionary
+    course = input("What course would you like to add? ")
     if course not in c_roster:
-        print('Course not found')
-
-    # Tests if the id is in the list associated with the course key
+        print("The course you entered does not exist.")
     elif id in c_roster[course]:
-        print('You are already enrolled in that course.')
-
-    # Tests if the length of the list for the course is equal to the max size of the course
-    elif len(c_roster[course]) >= c_max_size[course]:
-        print('Course already full.')
-
+        print("You are already registered in this course.")
+    elif len(c_roster[course]) == c_max_size[course]:
+        print("The course you entered has reached its maximum capacity.")
     else:
         c_roster[course].append(id)
-        print('Course added')
+        print("You have been added to that course.")
 
 
 def drop_course(id, c_roster):
@@ -71,16 +66,11 @@ def drop_course(id, c_roster):
     # Remove student ID from the course’s roster and display a message
     # if there is no problem.  This function has no return value.
     # -------------------------------------------------------------
-    course = input('Enter course you want to drop: ')
-
-    # Tests if the course entered is a key in the c_roster dictionary
-    if course not in c_roster:
-        print('Course not found')
-
-    # Tests if the id is not in the list associated with the course key
-    elif id not in c_roster[course]:
-        print('You are not enrolled in that course.')
-
+    course = input("What course would you like to drop? ")
+    if course in c_roster == False:
+        print("The course you entered does not exist.")
+    elif id in c_roster[course] == False:
+        print("You were not enrolled in this course.")
     else:
         c_roster[course].remove(id)
-        print('Course dropped')
+        print("You have been dropped from that course.")
