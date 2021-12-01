@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------
-# Author: Max Clingroth
-# Date: 11/17/21
+# Author: Brady Camp
+# Date: November 28, 2021
 #
 # This module supports changes in the registered courses
 # for students in the class registration system.  It allows
@@ -82,7 +82,7 @@ def drop_course(id, c_roster):
     # Tests if the id is not in the list associated with the course key
     elif id not in c_roster[course]:
         print("You were not enrolled in this course.")
-    
+
     else:
         c_roster[course].remove(id)
         print("You have been dropped from that course.")
