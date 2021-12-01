@@ -26,6 +26,7 @@ def list_courses(id, c_roster):
     while i < length:
         print(list[i])
         i += 1
+    print('Total number:', len(list))
 
 
 def add_course(id, c_roster, c_max_size):
@@ -67,9 +68,9 @@ def drop_course(id, c_roster):
     # if there is no problem.  This function has no return value.
     # -------------------------------------------------------------
     course = input("What course would you like to drop? ")
-    if course in c_roster == False:
+    if course not in c_roster:
         print("The course you entered does not exist.")
-    elif id in c_roster[course] == False:
+    elif id not in c_roster[course]:
         print("You were not enrolled in this course.")
     else:
         c_roster[course].remove(id)
