@@ -43,14 +43,20 @@ def add_course(id, c_roster, c_max_size):
     # roster and display a message if there is no problem.  This
     # function has no return value.
     # -------------------------------------------------------------
-    # Tests if the course entered is a key in the c_roster dictionary
     course = input("What course would you like to add? ")
+
+    # Tests if the course entered is a key in the c_roster dictionary
     if course not in c_roster:
         print("The course you entered does not exist.")
+
+    # Tests if the id is in the list associated with the course key
     elif id in c_roster[course]:
         print("You are already registered in this course.")
+
+    # Tests if the length of the list for the course is equal to the max size of the course
     elif len(c_roster[course]) == c_max_size[course]:
         print("The course you entered has reached its maximum capacity.")
+
     else:
         c_roster[course].append(id)
         print("You have been added to that course.")
@@ -68,10 +74,15 @@ def drop_course(id, c_roster):
     # if there is no problem.  This function has no return value.
     # -------------------------------------------------------------
     course = input("What course would you like to drop? ")
+
+    # Tests if the course entered is a key in the c_roster dictionary
     if course not in c_roster:
         print("The course you entered does not exist.")
+
+    # Tests if the id is not in the list associated with the course key
     elif id not in c_roster[course]:
         print("You were not enrolled in this course.")
+    
     else:
         c_roster[course].remove(id)
         print("You have been dropped from that course.")
